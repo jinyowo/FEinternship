@@ -1,27 +1,33 @@
 # DOM 조작의 성능 비교  
----
+
 ### < innerHTML() vs insertAdjacentHTML() >
 
-* innerHTML()  
-> 해당 요소의 내용을 HTML 마크업 문자열로 반환한다.  <br><br>
+* innerHTML()
+
+> 해당 요소의 내용을 HTML 마크업 문자열로 반환한다.  
 `innerHTML()`은 파싱된 새 문자열의 결과와 요소의 현재 내용을 교체한다.<br>
 ```javascript
-element.innerHTML = content;```
+element.innerHTML = content;
+```
 보통은 괜찮지만,  
 ```javascript
-element.innerHTML += addContent;```  
+element.innerHTML += addContent;
+```  
 와 같이 텍스트 조각을 반복해서 덧붙이는 과정에서는 직렬화와 파싱의 두 단계가 반복되므로 비효율적이다. <br>
 
 
 * insertAdjacentHTML()  
-> 지정한 요소의 '주변에' HTML 마크업 문자열을 입력할 수 있다.  <br><br>
+
+> 지정한 요소의 '주변에' HTML 마크업 문자열을 입력할 수 있다.  
 ```javascript
-element.insertAdjacentHTML(position, text);```  
+element.insertAdjacentHTML(position, text);
+```  
 구조로 첫 번째 인자에는 text를 넣을 위치를 지정하고, 두 번째 인자에는 넣고 싶은 문자열을 쓴다.<br><br>
 ex)  
 ```javascript
 var element = document.querySelector("h1");  
-element.insertAdjacentHTML("beforebegin", "<p>hello</p>");```  
+element.insertAdjacentHTML("beforebegin", "<p>hello</p>");
+```  
 을 실행하면 h1 태그의 앞 부분에 p태그 구문이 삽입된다. (h1태그가 1개라고 가정)  <br><br>
 이 메소드는 기존 하위 Node들을 건드리지 않아서 작업속도가 `innerHTML()`에 비해 상대적으로 빠르다.  <br><br>
 [추가정보 및 position의 종류에 대한 정보 바로가기](https://developer.mozilla.org/ko/docs/Web/API/Element/insertAdjacentHTML)
@@ -42,7 +48,8 @@ for ( var i = 0; i < div.length; i++) {
     for ( var e = 0; e < elems.length; e++) {  
         div[i].appendChild(elems[e].cloneNode(true));  
     }  
-}```  
+}
+```  
 * `DocumentFragment`를 사용하여 DOM그리기  
 ```javascript
 var div = document.getElementsByTagName("div");
@@ -52,7 +59,8 @@ for ( var e = 0; e < elems.length; e++) {
 }
 for ( var i = 0; i < div.length; i++) {
     div[i].appendChild(frag.cloneNode(true));
-}```
+}
+```
 
 이러한 특징을 이용해 `innerHTML()`과 `DocumentFragment`를 이용하여 `insertAdjacentHTML()`를 구현할 수도 있다.
 
