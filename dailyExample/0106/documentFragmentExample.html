@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>JS Bin</title>
+  <style type="text/css">
+  h1 {
+  }
+  div {
+    color : #ff0000;
+  }
+  span {
+    color : #00ff00;
+  }
+  </style>
+</head>
+<body>
+  <h1>selector test</h1>
+
+  <div></div>
+  <div></div>
+  <div></div>
+
+  <span></span>
+  <span></span>
+  <span></span>
+
+<script>
+  var elems = document.querySelectorAll("h1");
+  var div = document.getElementsByTagName("div");
+  for ( var i = 0; i < div.length; i++) {
+    for ( var e = 0; e < elems.length; e++) {
+        div[i].appendChild(elems[e].cloneNode(true));
+      }
+  }
+
+  var span = document.getElementsByTagName("span");
+  var frag = document.createDocumentFragment();
+  for ( var e = 0; e < elems.length; e++) {
+    frag.appendChild(elems[e]);
+}
+
+  for ( var i = 0; i < div.length; i++) {
+      span[i].appendChild(frag.cloneNode(true));
+  }
+</script>
+</body>
+</html>
