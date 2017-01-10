@@ -8,6 +8,8 @@ document.addEventListener("DOMContentLoaded", function(evt) {
 var changeTab = function() {
     // tab Array
     var tabArr = document.querySelectorAll("div.tab");
+    var start = document.querySelector("section.eleDisplayShow");
+    ajax(1, start);
 
     for (var i = 0; i < tabArr.length; i++) {
         tabArr[i].addEventListener("click", clickTab, false);
@@ -59,26 +61,28 @@ function contentFill(ele) {
     case "my_theme" : index = 3; break;
     case "my_news" : index = 4; break;
   }
-  ajax(index);
+  ajax(index, ele);
 }
-function ajax(index) {
+function ajax(index, ele) {
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function() {
         var htData = JSON.parse(oReq.responseText);
-        goExec(htData);
+        goExec(htData, ele);
     });;
     oReq.open("GET", "http://jsonplaceholder.typicode.com/posts/"+index);
     oReq.send();
 }
-function goExec(data){
+function goExec(data, ele){
   var myName = data.title;
   var myDesc = data.body;
 
   console.log(myName);
   console.log(myDesc);
-
+  //
+  // var underscore = _.unescape('Curly, Larry &amp; Moe');
+  // console.log(underscore);
   var str = "<ul > <li > <div class='myName' >"+myName+"</div> <div class='myDesc' >"+myDesc+"</div> </li> </ul>";
-  return str;
+  ele.innerHTML = str;
 }
 // classList
 function addClass(ele, className) {
