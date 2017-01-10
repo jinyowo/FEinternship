@@ -8,9 +8,12 @@ document.addEventListener("DOMContentLoaded", function(evt) {
 var changeTab = function() {
     // tab Array
     var tabArr = document.querySelectorAll("div.tab");
+
+    // 첫 로딩 시 section의 내용을 한 번 받아옴
     var start = document.querySelector("section.eleDisplayShow");
     ajax(1, start);
 
+    // click event listener
     for (var i = 0; i < tabArr.length; i++) {
         tabArr[i].addEventListener("click", clickTab, false);
     }
@@ -22,7 +25,7 @@ function clickTab(evt) {
     var tabClass = "tab";
 
     var selectedTabClass = "selectedTab";
-    var showSectionClass = "eleDisplayShow";
+    var displayClass = "eleDisplayShow";
 
     var alreadySelectedTab = document.querySelector("div."+selectedTabClass);
 
@@ -31,7 +34,7 @@ function clickTab(evt) {
       return 0;
     }
 
-    var alreadySelectedSection = document.querySelector("."+showSectionClass);
+    var alreadySelectedSection = document.querySelector("."+displayClass);
     var showSectionId = "my_";
 
     resetClass(alreadySelectedTab, tabClass);
@@ -48,7 +51,7 @@ function clickTab(evt) {
 
     //
     var showSection = document.getElementById(showSectionId);
-    addClass(showSection, showSectionClass);
+    addClass(showSection, displayClass);
 
     contentFill(showSection);
 };
@@ -66,23 +69,18 @@ function contentFill(ele) {
 function ajax(index, ele) {
     var oReq = new XMLHttpRequest();
     oReq.addEventListener("load", function() {
-        var htData = JSON.parse(oReq.responseText);
-        goExec(htData, ele);
-    });;
+        goExec(oReq, ele);
+    });
     oReq.open("GET", "http://jsonplaceholder.typicode.com/posts/"+index);
     oReq.send();
 }
-function goExec(data, ele){
-  var myName = data.title;
-  var myDesc = data.body;
+function goExec(oReq, ele){
+  var data = JSON.parse(oReq.responseText);
 
-  console.log(myName);
-  console.log(myDesc);
-  //
-  // var underscore = _.unescape('Curly, Larry &amp; Moe');
-  // console.log(underscore);
-  var str = "<ul > <li > <div class='myName' >"+myName+"</div> <div class='myDesc' >"+myDesc+"</div> </li> </ul>";
-  ele.innerHTML = str;
+  var str = "<ul > <li > <div class='myName' ><%=title%></div> <div class='myDesc' ><%=body%></div> </li> </ul>";
+  var template = _.template(str);
+
+  ele.innerHTML = template(data);
 }
 // classList
 function addClass(ele, className) {
