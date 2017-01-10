@@ -28,7 +28,6 @@ function clickTab(evt) {
     var selectedTabClass = "selectedTab";
     var displayClass = "eleDisplayShow";
 
-<<<<<<< HEAD
     var alreadySelectedTab = document.querySelector("div." + selectedTabClass);
 
     // 이미 활성화되어 있는 탭을 클릭하면 아무일도 일어나지 않는다.
@@ -43,7 +42,6 @@ function clickTab(evt) {
     resetClass(alreadySelectedTab, tabClass);
     resetClass(alreadySelectedSection);
 
-<<<<<<< HEAD
     // click 후 tab과 section에 class 추가
     addClass(target, selectedTabClass);
     addClass(displaySection, displayClass);
