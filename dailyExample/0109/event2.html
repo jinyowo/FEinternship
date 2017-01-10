@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--
+Created using JS Bin
+http://jsbin.com
+
+Copyright (c) 2017 by anonymous (http://jsbin.com/gukuvafuyu/1/edit)
+
+Released under the MIT license: http://jsbin.mit-license.org
+-->
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Example : event</title>
+<style id="jsbin-css">
+
+button.toggle {
+  padding:10px 0px;
+  width: 250px;
+  font-size: 1.1em;
+}
+
+.my-layer {
+  margin-top: 2px;
+  width: 250px;
+  height : 200px;
+  background-color:#77869e;
+}
+
+</style>
+</head>
+<body>
+
+  <div class="wrap">
+    <button class="toggle">close</button>
+    <div class="my-layer"></div>
+  </div>
+<script>
+
+document.addEventListener("DOMContentLoaded", function(evt) {
+  buttonClick();
+});
+
+var buttonClick = function() {
+  var button = document.querySelector("button.toggle");
+  var layer = document.querySelector(".my-layer");
+
+  var cssProperty = getCSSProperty(layer, "display");
+
+  button.addEventListener("click", function(evt) {
+    if(evt.target.innerText === "close") {
+      evt.target.innerText = "show";
+      layer.style.display = "none";
+
+    } else {
+      evt.target.innerText = "close";
+      layer.style.display = "block";
+    }
+  }, false);
+
+  return "ok";
+};
+
+function getCSSProperty(ele, prop) {
+  var theCSSprop = window.getComputedStyle(ele, null).getPropertyValue(prop);
+
+  return theCSSprop;
+}
+
+</script>
+</body>
+</html>
