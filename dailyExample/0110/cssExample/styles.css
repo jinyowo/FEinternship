@@ -1,0 +1,36 @@
+body {
+  font-size : 12px;
+  font-family: '굴림', Gulim, Helvetica, sans-serif;
+}
+div {
+  border : 1px solid black;
+  padding : 0 50px;
+  height : 250px;
+  width : 500px;
+  //margin: auto;
+  background-color: gray;
+  font-size : 1em;
+
+  position : relative;
+  top : 10px;
+  left : 10px;
+}
+/*div.image {
+  margin-top: 20px;
+  background: url("./image.jpg") repeat-y center;
+  background-size: contain;
+  position : static;
+
+  height: 1000px;
+
+}*/
+
+div > span {
+  font-size : 1.5em;
+  border: 1px solid white;
+  margin : 5px;
+  position: absolute;
+}
+span:nth-child(2) {
+  top : 100px;
+}

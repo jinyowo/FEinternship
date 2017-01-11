@@ -1,0 +1,37 @@
+div {
+  border: 1px solid black;
+}
+div.back {
+  background-color: gray;
+  position : relative;
+  margin : auto;
+  width: 500px;
+  height : 308px;
+  padding: 1px;
+
+}
+div.back > div {
+  background-color: yellow;
+  text-align: center;
+  margin : 1px;
+}
+div.header {
+  height : 100px;
+  width : 496px;
+  position: absolute;
+
+}
+div.left {
+  width : 100px;
+  height : 200px;
+  position:relative;;
+  top:104px;
+  float : left;
+}
+div.center {
+  position:relative;
+  height : 200px;
+  width: 392px;
+  top:104px;
+  float:right;
+}

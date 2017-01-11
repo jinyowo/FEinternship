@@ -1,0 +1,47 @@
+html, body {
+  height:100%;
+  width:100%;
+}
+div {
+  border: 1px solid gray;
+}
+div.back {
+  height:inherit;
+  overflow:visible;
+}
+div.back > div {
+  margin-left: -1px;
+}
+.header {
+  /*margin-left: -1px;*/
+  background-color: gray;
+  margin-top: -1px;
+  height:10%;
+}
+.left, .right {
+  background-color: red;
+  width: 15%;
+  height: 50%;
+  margin: 5px 0px;
+}
+.left {
+  float:left;
+}
+div.back > .center {
+  margin: 2% 4.5%;
+  width:60%;
+  height:76%;
+  display:inline-block;
+}
+.right {
+  float:right;
+}
+.footer {
+  margin-bottom: -1px;
+  background-color: gray;
+  /*width:inherit;*/
+  clear: both;
+  height:30%;
+  width:100%;
+
+}

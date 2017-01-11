@@ -1,0 +1,21 @@
+div {
+  height:300px;
+  width:500px;
+  border: 1px solid gray;
+}
+div.back {
+  margin:0 auto;
+}
+div.back > div {
+  margin-top: -1px;
+}
+.left {
+  margin-left: 4%;
+  width:70%;
+  float:left;
+}
+.right {
+  margin-right: 4%;
+  width:20%;
+  float:right;
+}
