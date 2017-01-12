@@ -4,9 +4,10 @@
   padding:0;
   display: flex;
   flex-flow: row wrap;
+  align-items: stretch;
   text-align: center;
 }
-.container > div {
+.container > * {
   padding: 10px;
   flex: 1 100%;
 }
@@ -17,7 +18,6 @@
 .left, .right {
   background-color: rgb(34, 166, 138);
   border: 0.5px solid gray;
-  flex: initial;
 }
 div.header {
   background-color: skyblue;
@@ -28,7 +28,7 @@ div.footer {
 .content {
   background-color: tomato;
 }
-@media all and (min-width: 500px) {
+@media all and (min-width: 600px) {
   .left { flex: 1 auto; }
   .right { flex: 1 auto;}
 }
