@@ -110,12 +110,11 @@ function start() {
   var clickTab = function(evt) {
     // 해당 tab이 비활성화된 상태일때만 실행
     if(!isAlreadyClicked(evt.target)) {
-      console.log("ok");
       // 해당 tab - 활성화
       activeTab();
       // 다른 활성 tab - 비활
       inactiveTab();
-    } 
+    }
   }
   tabGroup.addEventListener("click", clickTab, false);
 
