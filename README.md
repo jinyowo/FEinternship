@@ -8,3 +8,7 @@
 * [CSS 자료내용 정리](https://github.com/jinyowo/FEinternship/blob/master/document/css.md)
 
 * [CSS Specificity 정리](https://github.com/jinyowo/FEinternship/blob/master/document/css-specificity.md)
+
+* [OOP 정리](https://github.com/jinyowo/FEinternship/blob/master/document/OOP.md)
+
+* [Javascript : Event Bubbling](https://github.com/jinyowo/FEinternship/blob/master/document/event-bubbling.md)
